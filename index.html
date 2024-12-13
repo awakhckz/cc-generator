@@ -1,324 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-ca-pub-3262040812884675"
+      crossorigin="anonymous"
+    ></script>
     <title>Credit Card Generator</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ececec;
-            margin: 0;
-            padding: 20px;
-            color: #fff;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: #0057fa;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        h1 {
-            text-align: center;
-            color: #f3f3f3;
-        }
-        .form-group {
-            margin: 20px 0;
-        }
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        select, button {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #ececec;
+        margin: 0;
+        padding: 20px;
+        color: #fff;
+      }
+      .container {
+        max-width: 900px;
+        margin: auto;
+        background: #0057fa;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      h1 {
+        text-align: center;
+        color: #f3f3f3;
+      }
+      .form-group {
+        margin: 20px 0;
+      }
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      select,
+      button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+      }
+      @media (min-width: 1020px) {
         .cards {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
         }
-        @media (min-width: 1020px) {
-            .cards {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
-        }
-        .card-container {
-            flex: 1 1 calc(33% - 10px);
-            max-width: 100%;
-            perspective: 1000px;
-        }
-        .card {
-            position: relative;
-            width: 90%;
-            padding: 20px;
-            background: linear-gradient(145deg, #4e54c8, #8f94fb);
-            border-radius: 15px;
-            color: #fff;
-            font-family: 'Courier New', monospace;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            transform-style: preserve-3d;
-            transform: rotateY(0);
-            transition: transform 0.6s ease;
-        }
-        .card .bank {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .card .type {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .card .chip {
-            width: 50px;
-            height: 35px;
-            background: gold;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        .card .card-number {
-            font-size: 18px;
-            letter-spacing: 2px;
-            margin: 15px 0;
-        }
-        .card .details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-        .card .name {
-            font-size: 14px;
-        }
-        .card .expiry {
-            font-size: 14px;
-        }
-        .card-back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, #2e3a55, #57698a);
-            color: #fff;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            backface-visibility: hidden;
-            transform: rotateY(180deg);
-        }
-        .card-back .cvv {
-            background: white;
-            color: black;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 16px;
-            letter-spacing: 1px;
-        }
-        .card-front {
-            backface-visibility: hidden;
-        }
-        .card.flip {
-            transform: rotateY(180deg);
-        }
+      }
+      .card-container {
+        flex: 1 1 calc(33% - 10px);
+        max-width: 100%;
+        perspective: 1000px;
+      }
+      .card {
+        position: relative;
+        width: 90%;
+        padding: 20px;
+        background: linear-gradient(145deg, #4e54c8, #8f94fb);
+        border-radius: 15px;
+        color: #fff;
+        font-family: "Courier New", monospace;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        transform-style: preserve-3d;
+        transform: rotateY(0);
+        transition: transform 0.6s ease;
+      }
+      .card .bank {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .card .type {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .card .chip {
+        width: 50px;
+        height: 35px;
+        background: gold;
+        border-radius: 5px;
+        margin: 10px 0;
+      }
+      .card .card-number {
+        font-size: 18px;
+        letter-spacing: 2px;
+        margin: 15px 0;
+      }
+      .card .details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+      }
+      .card .name {
+        font-size: 14px;
+      }
+      .card .expiry {
+        font-size: 14px;
+      }
+      .card-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(145deg, #2e3a55, #57698a);
+        color: #fff;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+      }
+      .card-back .cvv {
+        background: white;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        letter-spacing: 1px;
+      }
+      .card-front {
+        backface-visibility: hidden;
+      }
+      .card.flip {
+        transform: rotateY(180deg);
+      }
     </style>
-
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>Vado Credit Card Generator</h1>
-        <div class="form-group">
-            <label for="cardType">Card Brand</label>
-            <select id="cardType">
-                <option value="Visa">Visa</option>
-                <option value="MasterCard">MasterCard</option>
-                <option value="AmEx">American Express</option>
-                <option value="Discover">Discover</option>
-                <option value="JCB">JCB</option>
-                <option value="UnionPay">UnionPay</option>
-                <option value="RuPay">RuPay</option>
-                <option value="Maestro">Maestro</option>
-                <option value="Diners Club">Diners Club</option>
-                <option value="Laser">Laser</option>
-                <option value="Solo">Solo</option>
-                <option value="Switch">Switch</option>
-                <option value="Verve">Verve</option>
-                <option value="Nexo">Nexo</option>
-                <option value="Mir">Mir</option>
-                <option value="Elo">Elo</option>
-                <option value="Troy">Troy</option>
-                <option value="Paysera">Paysera</option>
-                <option value="Barclaycard">Barclaycard</option>
-                <option value="N26">N26</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="country">Country</label>
-            <select id="country">
-                <option value="US">United States</option>
-                <option value="UK">United Kingdom</option>
-                <option value="CA">Canada</option>
-                <option value="IN">India</option>
-                <option value="AU">Australia</option>
-                <option value="JP">Japan</option>
-                <option value="CN">China</option>
-                <option value="BR">Brazil</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-                <option value="IT">Italy</option>
-                <!-- <option value="ZA">South Africa</option>
+      <h1>Vado Credit Card Generator</h1>
+      <div class="form-group">
+        <label for="cardType">Card Brand</label>
+        <select id="cardType">
+          <option value="Visa">Visa</option>
+          <option value="MasterCard">MasterCard</option>
+          <option value="AmEx">American Express</option>
+          <option value="Discover">Discover</option>
+          <option value="JCB">JCB</option>
+          <option value="UnionPay">UnionPay</option>
+          <option value="RuPay">RuPay</option>
+          <option value="Maestro">Maestro</option>
+          <option value="Diners Club">Diners Club</option>
+          <option value="Laser">Laser</option>
+          <option value="Solo">Solo</option>
+          <option value="Switch">Switch</option>
+          <option value="Verve">Verve</option>
+          <option value="Nexo">Nexo</option>
+          <option value="Mir">Mir</option>
+          <option value="Elo">Elo</option>
+          <option value="Troy">Troy</option>
+          <option value="Paysera">Paysera</option>
+          <option value="Barclaycard">Barclaycard</option>
+          <option value="N26">N26</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select id="country">
+          <option value="US">United States</option>
+          <option value="UK">United Kingdom</option>
+          <option value="CA">Canada</option>
+          <option value="IN">India</option>
+          <option value="AU">Australia</option>
+          <option value="JP">Japan</option>
+          <option value="CN">China</option>
+          <option value="BR">Brazil</option>
+          <option value="FR">France</option>
+          <option value="DE">Germany</option>
+          <option value="IT">Italy</option>
+          <!-- <option value="ZA">South Africa</option>
                 <option value="NG">Nigeria</option> -->
-                <option value="RU">Russia</option>
-                <option value="MX">Mexico</option>
-                <option value="ES">Spain</option>
-                <option value="KR">South Korea</option>
-                <option value="AE">United Arab Emirates</option>
-                <option value="SG">Singapore</option>
-                <option value="MY">Malaysia</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="bank">Bank</label>
-            <select id="bank">
-                <option value="Chase">Chase</option>
-                <option value="Citi">CitiBank</option>
-                <option value="HSBC">HSBC</option>
-                <option value="HDFC">HDFC Bank</option>
-                <option value="Barclays">Barclays</option>
-                <option value="Santander">Santander</option>
-                <option value="Wells Fargo">Wells Fargo</option>
-                <option value="Bank of America">Bank of America</option>
-                <option value="RBC">Royal Bank of Canada</option>
-                <option value="ANZ">ANZ Bank</option>
-                <option value="ICICI">ICICI Bank</option>
-                <option value="DBS">DBS Bank</option>
-                <option value="OCBC">OCBC Bank</option>
-                <option value="Standard Bank">Standard Bank</option>
-                <option value="First Bank">First Bank</option>
-                <option value="Alpha Bank">Alpha Bank</option>
-                <option value="Banco do Brasil">Banco do Brasil</option>
-                <option value="Bank of China">Bank of China</option>
-                <option value="Mitsubishi UFJ">Mitsubishi UFJ</option>
-                <option value="Scotiabank">Scotiabank</option>
-            </select>
-        </div>
-        <button onclick="generateCards()">Generate Cards</button>
-        <div class="cards" id="cardsDisplay"></div>
+          <option value="RU">Russia</option>
+          <option value="MX">Mexico</option>
+          <option value="ES">Spain</option>
+          <option value="KR">South Korea</option>
+          <option value="AE">United Arab Emirates</option>
+          <option value="SG">Singapore</option>
+          <option value="MY">Malaysia</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="bank">Bank</label>
+        <select id="bank">
+          <option value="Chase">Chase</option>
+          <option value="Citi">CitiBank</option>
+          <option value="HSBC">HSBC</option>
+          <option value="HDFC">HDFC Bank</option>
+          <option value="Barclays">Barclays</option>
+          <option value="Santander">Santander</option>
+          <option value="Wells Fargo">Wells Fargo</option>
+          <option value="Bank of America">Bank of America</option>
+          <option value="RBC">Royal Bank of Canada</option>
+          <option value="ANZ">ANZ Bank</option>
+          <option value="ICICI">ICICI Bank</option>
+          <option value="DBS">DBS Bank</option>
+          <option value="OCBC">OCBC Bank</option>
+          <option value="Standard Bank">Standard Bank</option>
+          <option value="First Bank">First Bank</option>
+          <option value="Alpha Bank">Alpha Bank</option>
+          <option value="Banco do Brasil">Banco do Brasil</option>
+          <option value="Bank of China">Bank of China</option>
+          <option value="Mitsubishi UFJ">Mitsubishi UFJ</option>
+          <option value="Scotiabank">Scotiabank</option>
+        </select>
+      </div>
+      <button onclick="generateCards()">Generate Cards</button>
+      <div class="cards" id="cardsDisplay"></div>
     </div>
 
-    <script>
-        let names = [];
-  let surnames = [];
+    <script crossorigin="anonymous">
+      let names = [];
+      let surnames = [];
 
-  // Fetch the JSON file
-  fetch("names.json")
-    .then((response) => response.json())
-    .then((data) => {
-      names = data.names;
-      surnames = data.surnames;
-    })
-    .catch((error) => console.error("Error loading JSON:", error));
-        function getRandomName() {
-            const name = names[Math.floor(Math.random() * names.length)];
-            const surname = surnames[Math.floor(Math.random() * surnames.length)];
-            return `${name} ${surname}`;
+      // Fetch the JSON file
+      fetch("names.json")
+        .then((response) => response.json())
+        .then((data) => {
+          names = data.names;
+          surnames = data.surnames;
+        })
+        .catch((error) => console.error("Error loading JSON:", error));
+      function getRandomName() {
+        const name = names[Math.floor(Math.random() * names.length)];
+        const surname = surnames[Math.floor(Math.random() * surnames.length)];
+        return `${name} ${surname}`;
+      }
+
+      function generateCardNumber(prefix, length) {
+        let cardNumber = prefix;
+        while (cardNumber.length < length - 1) {
+          cardNumber += Math.floor(Math.random() * 10);
+        }
+        return cardNumber + getLuhnChecksum(cardNumber);
+      }
+
+      function getLuhnChecksum(cardNumber) {
+        let sum = 0;
+        let shouldDouble = true;
+        for (let i = cardNumber.length - 1; i >= 0; i--) {
+          let digit = parseInt(cardNumber[i]);
+          if (shouldDouble) {
+            digit *= 2;
+            if (digit > 9) digit -= 9;
+          }
+          sum += digit;
+          shouldDouble = !shouldDouble;
+        }
+        return (10 - (sum % 10)) % 10;
+      }
+
+      function generateExpiryDate() {
+        const currentYear = new Date().getFullYear();
+        const year = Math.floor(Math.random() * 5) + (currentYear + 2);
+        const month = String(Math.floor(Math.random() * 12) + 1).padStart(
+          2,
+          "0"
+        );
+        return `${month}/${year}`;
+      }
+
+      function generateCVV() {
+        return String(Math.floor(Math.random() * 900) + 100);
+      }
+
+      function generateCards() {
+        const cardType = document.getElementById("cardType").value;
+        const country = document.getElementById("country").value;
+        const bank = document.getElementById("bank").value;
+
+        const cardDetails = {
+          Visa: { prefix: "4", length: 16 },
+          MasterCard: { prefix: "5", length: 16 },
+          AmEx: { prefix: "37", length: 15 },
+          Discover: { prefix: "6", length: 16 },
+          JCB: { prefix: "35", length: 16 },
+          UnionPay: { prefix: "62", length: 16 },
+          RuPay: { prefix: "60", length: 16 },
+          Maestro: { prefix: "50", length: 16 },
+          "Diners Club": { prefix: "30", length: 14 },
+          Laser: { prefix: "67", length: 16 },
+          Solo: { prefix: "63", length: 16 },
+          Switch: { prefix: "49", length: 16 },
+          Verve: { prefix: "50", length: 16 },
+          Nexo: { prefix: "41", length: 16 },
+          Mir: { prefix: "22", length: 16 },
+          Elo: { prefix: "63", length: 16 },
+          Troy: { prefix: "97", length: 16 },
+          Paysera: { prefix: "56", length: 16 },
+          Barclaycard: { prefix: "46", length: 16 },
+          N26: { prefix: "53", length: 16 },
+        };
+
+        if (!cardDetails[cardType]) {
+          alert("Invalid card type selected!");
+          return;
         }
 
-        function generateCardNumber(prefix, length) {
-            let cardNumber = prefix;
-            while (cardNumber.length < length - 1) {
-                cardNumber += Math.floor(Math.random() * 10);
-            }
-            return cardNumber + getLuhnChecksum(cardNumber);
-        }
+        const { prefix, length } = cardDetails[cardType];
+        const cardsDisplay = document.getElementById("cardsDisplay");
+        cardsDisplay.innerHTML = "";
 
-        function getLuhnChecksum(cardNumber) {
-            let sum = 0;
-            let shouldDouble = true;
-            for (let i = cardNumber.length - 1; i >= 0; i--) {
-                let digit = parseInt(cardNumber[i]);
-                if (shouldDouble) {
-                    digit *= 2;
-                    if (digit > 9) digit -= 9;
-                }
-                sum += digit;
-                shouldDouble = !shouldDouble;
-            }
-            return (10 - (sum % 10)) % 10;
-        }
+        for (let i = 0; i < 3; i++) {
+          const cardNumber = generateCardNumber(prefix, length);
+          const expiryDate = generateExpiryDate();
+          const cvv = generateCVV();
+          const name = getRandomName();
 
-        function generateExpiryDate() {
-            const currentYear = new Date().getFullYear();
-            const year = Math.floor(Math.random() * 5) + (currentYear + 2);
-            const month = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
-            return `${month}/${year}`;
-        }
-
-        function generateCVV() {
-            return String(Math.floor(Math.random() * 900) + 100);
-        }
-
-        function generateCards() {
-            const cardType = document.getElementById('cardType').value;
-            const country = document.getElementById('country').value;
-            const bank = document.getElementById('bank').value;
-
-            const cardDetails = {
-                Visa: { prefix: "4", length: 16 },
-                MasterCard: { prefix: "5", length: 16 },
-                AmEx: { prefix: "37", length: 15 },
-                Discover: { prefix: "6", length: 16 },
-                JCB: { prefix: "35", length: 16 },
-                UnionPay: { prefix: "62", length: 16 },
-                RuPay: { prefix: "60", length: 16 },
-                Maestro: { prefix: "50", length: 16 },
-                "Diners Club": { prefix: "30", length: 14 },
-                Laser: { prefix: "67", length: 16 },
-                Solo: { prefix: "63", length: 16 },
-                Switch: { prefix: "49", length: 16 },
-                Verve: { prefix: "50", length: 16 },
-                Nexo: { prefix: "41", length: 16 },
-                Mir: { prefix: "22", length: 16 },
-                Elo: { prefix: "63", length: 16 },
-                Troy: { prefix: "97", length: 16 },
-                Paysera: { prefix: "56", length: 16 },
-                Barclaycard: { prefix: "46", length: 16 },
-                N26: { prefix: "53", length: 16 }
-            };
-
-            if (!cardDetails[cardType]) {
-                alert("Invalid card type selected!");
-                return;
-            }
-
-            const { prefix, length } = cardDetails[cardType];
-            const cardsDisplay = document.getElementById('cardsDisplay');
-            cardsDisplay.innerHTML = "";
-
-            for (let i = 0; i < 3; i++) {
-                const cardNumber = generateCardNumber(prefix, length);
-                const expiryDate = generateExpiryDate();
-                const cvv = generateCVV();
-                const name = getRandomName();
-
-                const cardHTML = `
+          const cardHTML = `
                     <div class="card-container">
                         <div class="card" onclick="this.classList.toggle('flip')">
                             <div class="card-front">
@@ -337,9 +345,9 @@
                         </div>
                     </div>
                 `;
-                cardsDisplay.innerHTML += cardHTML;
-            }
+          cardsDisplay.innerHTML += cardHTML;
         }
+      }
     </script>
-</body>
+  </body>
 </html>
